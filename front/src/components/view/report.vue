@@ -11,13 +11,13 @@ export default {
         return {
             msg:'这是业主报修页面'
         }
-    },
+    }
 }
 </script>
 
-<style >
+<style>
 .title_one{
     text-align: center;
-    margin: 0;
+    margin: 0
     }
 </style>

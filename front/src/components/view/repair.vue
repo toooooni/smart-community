@@ -18,6 +18,6 @@ export default {
 <style >
 .title_one{
     text-align: center;
-    margin: 0;
+    margin: 0
     }
 </style>

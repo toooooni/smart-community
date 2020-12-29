@@ -10,29 +10,29 @@ Vue.use(Router)
 export default new Router({
   routes: [
     {
-      path:'/login',
-      name:'login',
-      component:login,
+      path: '/login',
+      name: 'login',
+      component: login
     },
     {
-      path:'/manage',
-      name:'manage',
-      component:manage,
+      path: '/manage',
+      name: 'manage',
+      component: manage
     },
     {
-      path:'/register',
-      name:'register',
-      component:register,
+      path: '/register',
+      name: 'register',
+      component: register
     },
     {
-      path:'/repair',
-      name:repair,
-      component:repair,
+      path: '/repair',
+      name: repair,
+      component: repair
     },
     {
-      path:'/report',
-      name:report,
-      component:report,
+      path: '/report',
+      name: report,
+      component: report
     }
   ]
 })

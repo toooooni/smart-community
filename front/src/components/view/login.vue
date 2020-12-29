@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name:'login',
+     name:'login',
     data() {
         return {
             msg:'这是登录页面'
