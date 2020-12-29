@@ -1,6 +1,6 @@
-# smart-community
+# front
 
-> A manage system for smart-communty
+> A Vue.js project
 
 ## Build Setup
 
