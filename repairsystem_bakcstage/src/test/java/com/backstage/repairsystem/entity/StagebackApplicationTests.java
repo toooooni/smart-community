@@ -1,4 +1,4 @@
-package com.backstage_dl.demo;
+package com.backstage.repairsystem.entity;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
