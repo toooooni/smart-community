@@ -1,9 +1,10 @@
 package com.backstage.repairsystem.entity;
 
 /**
- * @author DL
+ * @author HKT
  * @date 2020/12/30 15:09
  */
+
 import lombok.Data;
 
 import javax.persistence.Entity;
