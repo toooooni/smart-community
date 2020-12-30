@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e1ec937-1ab5-4623-a6af-5e2fff1160b5" name="Default Changelist" comment="text1">
+    <list default="true" id="8e1ec937-1ab5-4623-a6af-5e2fff1160b5" name="Default Changelist" comment="提交用户数据类">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/user_op/DataOp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/user_op/DataOp.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,6 +33,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../repairservice" />
@@ -67,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1609293147606</updated>
-      <workItem from="1609293148747" duration="5349000" />
+      <workItem from="1609293148747" duration="7928000" />
     </task>
     <task id="LOCAL-00001" summary="text1">
       <created>1609295001294</created>
@@ -76,7 +79,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609295001294</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="提交用户数据类">
+      <created>1609298861840</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1609298861840</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -95,6 +105,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="text1" />
-    <option name="LAST_COMMIT_MESSAGE" value="text1" />
+    <MESSAGE value="提交用户数据类" />
+    <option name="LAST_COMMIT_MESSAGE" value="提交用户数据类" />
   </component>
 </project>
