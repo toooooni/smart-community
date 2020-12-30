@@ -11,7 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import java.math.BigDecimal;
 import java.sql.Date;
 
 @Entity
@@ -19,14 +18,18 @@ import java.sql.Date;
 public class RepairForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //设置主键formId为自增
-    //报修单号、报修人Id、是否公用、物品属性、维修备注、地址、电话、付费情况、维修状态、日期、评价星级、评价内容
+    //报修单号、用户Id、是否公用区域、物品属性、维修备注、地址、电话、是否付费、维修状态、维修日期、评价星级、评价内容
     private Integer formId;
     private Integer personId;
     private boolean whetherPublic;
-    private String title;
-    private BigDecimal price;
-    private String author;
-    private String publisher;
-    private String ownerId;
-    private String type;
+    private String itemType;
+    private String message;
+    private String address;
+    private String tel;
+    private Integer whetherPay;
+    private Integer stateRepair;
+    private Date repairDate;
+    private Integer evaluationStar;
+    private String evaluationNote;
+
 }

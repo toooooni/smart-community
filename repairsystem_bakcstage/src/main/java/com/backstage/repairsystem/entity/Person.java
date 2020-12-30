@@ -13,9 +13,9 @@ import javax.persistence.*;
 @Data
 public class Person {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) //设置主键personId为自增
-    //Id、用户名、密码、电话、邮箱、用户身份
-    private Integer personId;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //设置主键PersonIdr为自增
+    //用户Id、用户名、密码、电话、邮件、用户身份
+    private Integer PersonId;
     private String name;
     private String password;
     private String tel;
