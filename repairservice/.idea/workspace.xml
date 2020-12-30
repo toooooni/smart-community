@@ -4,9 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="8e1ec937-1ab5-4623-a6af-5e2fff1160b5" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../repairservice/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="2c9095c9-5d8c-4e48-9515-5d30a8b1333f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../repairsystem_bakcstage/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../repairsystem_bakcstage/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +16,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="ProjectId" id="1mMAaGycgGSXseWQXodClb0Uvj2" />
+  <component name="ProjectId" id="1mM7SgQdZYOKRhLyRfzetXVsetI" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -27,23 +27,13 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../repairservice" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="RepairsystemApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
-      <module name="repairsystem_bakcstage" />
-      <option name="SPRING_BOOT_MAIN_CLASS" value="com.backstage.repairsystem.RepairsystemApplication" />
+    <configuration name="RepairserviceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="repairservice" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="edu.xust.repairservice.RepairserviceApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -52,12 +42,14 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="8e1ec937-1ab5-4623-a6af-5e2fff1160b5" name="Default Changelist" comment="" />
-      <created>1609293147606</created>
+      <changelist id="2c9095c9-5d8c-4e48-9515-5d30a8b1333f" name="Default Changelist" comment="" />
+      <created>1609291610692</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1609293147606</updated>
-      <workItem from="1609293148747" duration="1724000" />
+      <updated>1609291610692</updated>
+      <workItem from="1609291611916" duration="1041000" />
+      <workItem from="1609293214748" duration="583000" />
+      <workItem from="1609294260156" duration="440000" />
     </task>
     <servers />
   </component>
@@ -74,5 +66,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
