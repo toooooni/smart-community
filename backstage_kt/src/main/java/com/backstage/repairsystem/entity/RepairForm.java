@@ -10,7 +10,7 @@ import java.sql.Date;
 
 @Entity
 @Data
-public class repairForm {
+public class RepairForm {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //设置主键formId为自增
     //报修单号、用户Id、是否公用区域、物品属性、维修备注、地址、电话、是否付费、维修状态、维修日期、评价星级、评价内容
