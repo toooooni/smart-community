@@ -1,24 +1,21 @@
-package com.backstage.repairsystem;
+package com.backstage.repairsystem.repository;
 
-import com.backstage.repairsystem.repository.PersonRepository;
+import com.backstage.repairsystem.entity.Person;d
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-@SpringBootTest
-class RepairsystemApplicationTests {
+import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest(classes = PersonRepository.class)
+class PersonRepositoryTest {
     @Autowired
-    private PersonRepository personRepository;
+    private  PersonRepository personRepository;
 
     //测试查询全表
     @Test
     void findAll(){
         System.out.println(personRepository.findAll());
-    }
-
-    @Test
-    void contextLoads() {
     }
 
 }
