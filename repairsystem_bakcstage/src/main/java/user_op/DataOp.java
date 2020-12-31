@@ -7,12 +7,13 @@ package user_op;
 
 public class DataOp {
 
-    /**
-     * 判断字符串是否属于数字
-     * @param input s
-     * @return is number?
-     */
+
     private static boolean isNumber(String input) {
+        /**
+         * 判断字符串是否属于数字
+         * @param input s
+         * @return is number?
+         */
         for (int i = 0; i < input.length(); i++) {
             if (!Character.isDigit(input.charAt(i))) {
                 return false;
