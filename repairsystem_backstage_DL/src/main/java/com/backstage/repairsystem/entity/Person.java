@@ -21,4 +21,10 @@ public class Person {
     private String tel;
     private String email;
     private Integer userTypes;
+
+//    public Person(Integer id,String name,String password,String tel,String email,Integer type){
+//        this.PersonId = id;
+//        this.name = name;
+//        this.email = email;
+//    }
 }

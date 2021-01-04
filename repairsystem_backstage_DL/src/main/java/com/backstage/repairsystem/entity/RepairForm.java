@@ -32,4 +32,10 @@ public class RepairForm {
     private Integer evaluationStar;
     private String evaluationNote;
 
+//    public RepairForm(){
+//        this.whetherPay = false;
+//        this.evaluationStar = -1;
+//        this.evaluationNote = "";
+//
+//    }
 }
