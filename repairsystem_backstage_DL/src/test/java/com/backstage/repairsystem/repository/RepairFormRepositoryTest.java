@@ -25,13 +25,13 @@ class RepairFormRepositoryTest {
 
     @Test
     void findWithFormId(){
-        System.out.println(repairFormRepository.findRepairFormByFormIdIsAfter(1));
+        System.out.println(repairFormRepository.findRepairFormByFormId(1));
     }
 
     @Test
     void save(){
-        Integer personId = 3;
-        String itemType = "lift";
+        Integer personId = 6;
+        String itemType = "warm";
         String message = null;
         String address = "XUST";
         String tel = "1563";
@@ -41,7 +41,7 @@ class RepairFormRepositoryTest {
         repairForm.setMessage(message);
         repairForm.setAddress(address);
         repairForm.setTel(tel);
-        repairForm.setFormId(3);
+//        repairForm.setFormId(3);
         System.out.println(repairForm);
         System.out.println("test");
         RepairForm saveText = repairFormRepository.save(repairForm);

@@ -25,9 +25,10 @@ public class DataOp {
         return true;
     }
 
-    private static int commitRepairForm(Integer personId,String itemType,String message,
+    private static RepairForm commitNewRepairForm(Integer personId,String itemType,String message,
                                         String address,String tel){
         /**
+         * 提交维修单
          * @param personId 用户id
          * @param itemType 维修物品类型
          * @param message 备注
@@ -36,7 +37,6 @@ public class DataOp {
          * @return 1 正常
          *        -1 error
          */
-        RepairFormRepository repairFormRepository;
         RepairForm repairForm = new RepairForm();
             repairForm.setPersonId(personId);
             repairForm.setItemType(itemType);
@@ -44,8 +44,8 @@ public class DataOp {
             repairForm.setAddress(address);
             repairForm.setTel(tel);
 
-        RepairForm saveText = repairFormRepository.save(repairForm);
-        return 1;
+//        RepairForm saveText = repairFormRepository.save(repairForm);
+        return repairForm;
     }
 
     private static int modifyRepairForm(Integer formId,Integer userTypes,boolean whetherPay,
