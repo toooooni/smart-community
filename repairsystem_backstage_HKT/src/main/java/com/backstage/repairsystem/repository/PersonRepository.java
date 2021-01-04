@@ -9,5 +9,5 @@ import java.util.List;
  * @date 2021/1/4 11:39
  */
 public interface PersonRepository extends JpaRepository<Person,Integer> {
-
+    List<Person> findAllByPersonId(Integer personId);
 }
