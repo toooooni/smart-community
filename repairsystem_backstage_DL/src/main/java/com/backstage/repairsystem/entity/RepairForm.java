@@ -13,6 +13,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Date;
 
+import java.text.SimpleDateFormat;
+
 @Entity
 @Data
 public class RepairForm {
@@ -32,10 +34,11 @@ public class RepairForm {
     private Integer evaluationStar;
     private String evaluationNote;
 
-//    public RepairForm(){
-//        this.whetherPay = false;
-//        this.evaluationStar = -1;
-//        this.evaluationNote = "";
-//
-//    }
+    public RepairForm(){
+        this.whetherPay = false;
+        this.evaluationStar = -1;
+        this.evaluationNote = null;
+        this.repairDate = new Date(System.currentTimeMillis());
+        this.stateRepair = 1;
+    }
 }

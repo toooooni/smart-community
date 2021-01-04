@@ -1,5 +1,8 @@
 package user_op;
 
+import com.backstage.repairsystem.entity.*;
+import com.backstage.repairsystem.repository.RepairFormRepository;
+
 /**
  * @author DL
  * @date 2020/12/30
@@ -20,6 +23,29 @@ public class DataOp {
             }
         }
         return true;
+    }
+
+    private static int commitRepairForm(Integer personId,String itemType,String message,
+                                        String address,String tel){
+        /**
+         * @param personId 用户id
+         * @param itemType 维修物品类型
+         * @param message 备注
+         * @param address 地址
+         * @param tel 联系电话
+         * @return 1 正常
+         *        -1 error
+         */
+        RepairFormRepository repairFormRepository;
+        RepairForm repairForm = new RepairForm();
+            repairForm.setPersonId(personId);
+            repairForm.setItemType(itemType);
+            repairForm.setMessage(message);
+            repairForm.setAddress(address);
+            repairForm.setTel(tel);
+
+        RepairForm saveText = repairFormRepository.save(repairForm);
+        return 1;
     }
 
     private static int modifyRepairForm(Integer formId,Integer userTypes,boolean whetherPay,
