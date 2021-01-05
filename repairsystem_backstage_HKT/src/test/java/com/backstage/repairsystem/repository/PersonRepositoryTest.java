@@ -1,11 +1,11 @@
 package com.backstage.repairsystem.repository;
 
 import com.backstage.repairsystem.entity.Person;
+import com.backstage.repairsystem.entity.Result;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author HKT
@@ -22,18 +22,27 @@ class PersonRepositoryTest {
     }
 
     /**
-     * 用户注册测试
+     * 用户注册-重定义接口 测试成功
      */
     @Test
-    void register() {
+    void registerTest() {
+        //注册用户并返回personId
         Person person = new Person();
         person.setName("用户名test");
         person.setPassword("密码test");
         person.setTel("电话test");
         person.setEmail("邮箱test");
         person.setUserTypes(0);
-        Person registerList = personRepository.save(person);
-        System.out.println(registerList.getPersonId());
+        Person responseList = personRepository.save(person);
+        person.setPersonId(responseList.getPersonId());
+        //装配result
+        Result result = new Result();
+        result.setCode(1);
+        result.setMsg("登录成功");
+        result.setData(person.getPersonId());
+        System.out.println(result.getCode());
+        System.out.println(result.getMsg());
+        System.out.println(result.getData());
     }
 
     /**
@@ -42,34 +51,33 @@ class PersonRepositoryTest {
      * 查询是否有此personId
      * 验证personId是否与password匹配
      * 验证账密是否与userTypes匹配
+     * 测试成功
      */
     @Test
     void login() {
         Integer personId = 1;
         String password = "1";
         Integer userTypes = 0;
+        Result result = new Result();
+        Person person;
         if (personRepository.findByPersonId(personId).isEmpty()) {
-            System.out.println("用户名错误");
+            result.setCode(-1);
+            result.setMsg("该用户未注册");
         } else if (personRepository.findByPersonIdAndPassword(personId, password).isEmpty()) {
-            System.out.println("密码错误");
+            result.setCode(-2);
+            result.setMsg("该用户密码错误");
         } else if (personRepository.findByPersonIdAndPasswordAndUserTypes(personId, password, userTypes).isEmpty()) {
-            System.out.println("用户身份错误");
+            result.setCode(-3);
+            result.setMsg("该用户身份错误");
         } else {
-            System.out.println("登录成功");
-            System.out.println(personRepository.findByPersonId(personId));
+            person = personRepository.findByPersonId(personId).get(0);
+            person.setPassword("");
+            result.setCode(1);
+            result.setMsg("登录成功");
+            result.setData(person);
         }
-    }
-
-    /**
-     * 查询用户信息
-     */
-    @Test
-    void select() {
-        Integer personId = 1;
-        if (personRepository.findByPersonId(personId).isEmpty()) {
-            System.out.println("没有此用户");
-        } else {
-            System.out.println(personRepository.findByPersonId(personId));
-        }
+        System.out.println(result.getCode());
+        System.out.println(result.getMsg());
+        System.out.println(result.getData());
     }
 }

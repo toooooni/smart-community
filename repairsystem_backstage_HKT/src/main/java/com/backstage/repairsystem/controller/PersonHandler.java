@@ -1,10 +1,9 @@
 package com.backstage.repairsystem.controller;
 
 import com.backstage.repairsystem.entity.Person;
+import com.backstage.repairsystem.entity.Result;
 import com.backstage.repairsystem.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -27,90 +26,70 @@ public class PersonHandler {
         return personRepository.findAll();
     }
 
-
     /**
+     * 用户注册
+     *
      * @param name
      * @param password
      * @param tel
      * @param email
      * @param userTypes
-     * @return personId
-     * 备注:postman测试成功
-     * @role 用户注册
+     * @return result code:1
+     * result msg:"登录成功"
+     * result data:personId
      */
     @PostMapping("/register")
-    public Integer register(@RequestParam("name") String name, @RequestParam("password") String password, @RequestParam("tel") String tel, @RequestParam("email") String email, @RequestParam("userTypes") Integer userTypes) {
+    public Result register(@RequestParam("name") String name, @RequestParam("password") String password,
+                           @RequestParam("tel") String tel, @RequestParam("email") String email,
+                           @RequestParam("userTypes") Integer userTypes) {
+        //注册用户并返回personId
         Person person = new Person();
         person.setName(name);
         person.setPassword(password);
         person.setTel(tel);
         person.setEmail(email);
         person.setUserTypes(userTypes);
-        Person registerList = personRepository.save(person);
-        return registerList.getPersonId();
+        Person responseList = personRepository.save(person);
+        person.setPersonId(responseList.getPersonId());
+        //装配result
+        Result result = new Result();
+        result.setCode(1);
+        result.setMsg("注册成功");
+        result.setData(person.getPersonId());
+        return result;
     }
 
-//    /**
-//     * @role 用户注册
-//     * @param name
-//     * @param password
-//     * @param tel
-//     * @param email
-//     * @param userTypes
-//     * @return personId
-//     * 备注:postman测试失败,成功注册但仅返回状态码
-//     */
-//    @PostMapping("/register")
-//    public ResponseEntity<Object> register(@RequestParam("name") String name, @RequestParam("password") String password, @RequestParam("tel") String tel, @RequestParam("email") String email, @RequestParam("userTypes") Integer userTypes) {
-//        Person person = new Person();
-//        person.setName(name);
-//        person.setPassword(password);
-//        person.setTel(tel);
-//        person.setEmail(email);
-//        person.setUserTypes(userTypes);
-//        Person registerList = personRepository.save(person);
-//        return new ResponseEntity<>(registerList.getPersonId(),HttpStatus.OK);
-//    }
-
     /**
-     * @param person
-     * @return -1/-2/-3/0 [用户未注册：-3，密码错误：-2，用户身份错误：-3，登录成功：1]
-     * 备注：暂时未在postman中测试
-     * 备注：返回值与接口文档预期不符,建议返回ResponseEntity,如select
-     * 备注：了解更多ResponseEntity，https://www.jianshu.com/p/e52253c05366
-     * 备注：了解更多ResponseEntity，https://blog.csdn.net/neweastsun/article/details/81142870
-     * @role 用户登录
+     * 用户登录
+     *
+     * @param personId
+     * @param password
+     * @param userTypes
+     * @return result code:-1/-2/-3/0 [用户未注册：-3，密码错误：-2，用户身份错误：-3，登录成功：1]
+     * result msg:用户未注册/密码错误/用户身份错误/登录成功
+     * result data:person全表[password置空]
      */
     @PostMapping("/login")
-    public Integer login(@RequestParam("person") Person person) {
-        Integer personId = person.getPersonId();
-        String password = person.getPassword();
-        Integer userTypes = person.getUserTypes();
+    public Result login(@RequestParam("personId") Integer personId, @RequestParam("password") String password,
+                        @RequestParam("userTypes") Integer userTypes) {
+        Result result = new Result();
+        Person person;
         if (personRepository.findByPersonId(personId).isEmpty()) {
-            return -1;
+            result.setCode(-1);
+            result.setMsg("该用户未注册");
         } else if (personRepository.findByPersonIdAndPassword(personId, password).isEmpty()) {
-            return -2;
+            result.setCode(-2);
+            result.setMsg("该用户密码错误");
         } else if (personRepository.findByPersonIdAndPasswordAndUserTypes(personId, password, userTypes).isEmpty()) {
-            return -3;
+            result.setCode(-3);
+            result.setMsg("该用户身份错误");
         } else {
-            return 1;
+            person = personRepository.findByPersonId(personId).get(0);
+            person.setPassword("");
+            result.setCode(1);
+            result.setMsg("登录成功");
+            result.setData(person);
         }
-    }
-
-    /**
-     * @param personId
-     * @return {null,NOT_FOUND}/{用户信息，OK} [用户未找到/找到该用户]
-     * 备注：已经在postman中测试
-     * @role 查询用户
-     */
-    @PostMapping("/select")
-    public ResponseEntity<Object> select(@RequestParam("personId") Integer personId) {
-        List<Person> selectList = personRepository.findByPersonId(personId);
-        if (selectList.isEmpty()) {
-            return new ResponseEntity<>("", HttpStatus.OK);
-        } else {
-            Person person = selectList.get(0);
-            return new ResponseEntity<>(person, HttpStatus.OK);
-        }
+        return result;
     }
 }
