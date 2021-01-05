@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 /**
- * @author HKT
+ * @author HKT DL
  * @date 2021/1/4 11:39
  */
 public interface PersonRepository extends JpaRepository<Person, Integer> {
@@ -30,4 +30,6 @@ public interface PersonRepository extends JpaRepository<Person, Integer> {
      * @return 返回该用户信息
      */
     List<Person> findByPersonIdAndPasswordAndUserTypes(Integer personId, String password, Integer userTypes);
+
+    List<Person> findPersonByPersonId(Integer PersonId);
 }
