@@ -13,6 +13,7 @@ import java.util.List;
 public interface RepairFormRepository extends JpaRepository<RepairForm,Integer>{
 
     List<RepairForm> findRepairFormByFormId(Integer formId);
+    List<RepairForm> findRepairFormByPersonId(Integer PersonId);
 //    List<RepairForm> findByFormId(Integer formId);
 
 }

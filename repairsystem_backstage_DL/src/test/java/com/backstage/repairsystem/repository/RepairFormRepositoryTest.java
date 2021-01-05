@@ -47,4 +47,9 @@ class RepairFormRepositoryTest {
         RepairForm saveText = repairFormRepository.save(repairForm);
         System.out.println(saveText);
     }
+
+    @Test
+    void findWithPersonId(){
+        System.out.println(repairFormRepository.findRepairFormByPersonId(6));
+    }
 }

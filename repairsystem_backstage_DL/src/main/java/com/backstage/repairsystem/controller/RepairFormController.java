@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import com.backstage.repairsystem.entity.*;
 import com.backstage.repairsystem.repository.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -67,7 +68,7 @@ public class RepairFormController {
         List<RepairForm> nowForm = repairFormRepository.findRepairFormByFormId(formId);
         int length = nowForm.size();
         int index=0;
-        List<RepairForm> newList ;
+//        List<RepairForm> newList ;
         for (index=0;index<length;index++)
         {
             RepairForm newForm;
@@ -97,9 +98,22 @@ public class RepairFormController {
         return 1;
     }
 
+    @PostMapping(value = "/rearchFormId")
+    public List<Integer> findFormIdWithPersonId(Integer personId){
+        List<RepairForm> personList = repairFormRepository.findRepairFormByPersonId(personId);
+        List<Integer> formIdList = new ArrayList();
+        int index;
+        for (index=0;index<personList.size();index++){
+            int temp= personList.get(index).getFormId();
+            formIdList.add(temp);
+        }
+        System.out.println(formIdList);
+        return formIdList;
+    }
     public int findUserType(Integer personId){
         Person user = (personRepository.findPersonByPersonId(personId)).get(0);
         return user.getUserTypes();
     }
+
 
 }
