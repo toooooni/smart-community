@@ -29,7 +29,7 @@ public class RepairFormController {
     private PersonRepository personRepository;
 
     @PostMapping(value = "/commit")
-    public Integer commitRepairForm(Integer personId,String itemType,String message,
+    public Result commitRepairForm(Integer personId,String itemType,String message,
                                     String address,String tel){
         /**
          * 提交维修单,其中whether_public直接由用户类型确定
@@ -38,8 +38,11 @@ public class RepairFormController {
          * @param message 备注
          * @param address 地址
          * @param tel 联系电话
-         * @return 1 正常
-         *        -1 error
+         * @return result{
+         *     code: 1 成功  -1 失败
+         *     msg: 提示信息
+         *     data：{ formId }
+         * }
          */
 //        System.out.println("测试");
         RepairForm repairForm = new RepairForm();
@@ -54,21 +57,38 @@ public class RepairFormController {
             repairForm.setWhetherPublic(true);
         else repairForm.setWhetherPublic(false);
         repairFormRepository.save(repairForm);
-        return 1;
+        Result result = new Result();
+        result.setCode(1);
+        result.setMsg("提交成功");
+        result.setData(repairForm.getFormId());
+        return result;
+//        return 1;
     }
 
+
     @PostMapping(value = "/findform")
-    public List<RepairForm> findForm(Integer formId){
-        return repairFormRepository.findRepairFormByFormId(formId);
+    public Result findForm(Integer formId){
+        Result result = new Result();
+        List<RepairForm> data =repairFormRepository.findRepairFormByFormId(formId);
+        if (data.isEmpty()){
+            result.setCode(-1);
+            result.setMsg("未找到目标报修单");
+        }
+        else {
+            result.setCode(1);
+            result.setMsg("提交成功");
+            result.setData(data );
+        }
+        return result;
     }
 
     @PostMapping(value = "/modifyform")
-    public Integer modifyForm(Integer formId,boolean whetherPay,Integer stateRepair,Integer evaluationStar,
+    public Result modifyForm(Integer formId,boolean whetherPay,Integer stateRepair,Integer evaluationStar,
                               String evaluationNote){
         List<RepairForm> nowForm = repairFormRepository.findRepairFormByFormId(formId);
         int length = nowForm.size();
         int index=0;
-//        List<RepairForm> newList ;
+        Result result = new Result();
         for (index=0;index<length;index++)
         {
             RepairForm newForm;
@@ -87,19 +107,22 @@ public class RepairFormController {
                 newForm.setStateRepair(stateRepair);
             }
             else{
-                System.out.println("用户类型错误!");
-                return -2;
+                result.setCode(-2);
+                result.setMsg("用户类型错误!");
+                return result;
             }
             if (userType == 1)
                 newForm.setWhetherPay(true);
             repairFormRepository.save(newForm);
         }
-
-        return 1;
+        result.setCode(1);
+        result.setMsg("修改成功");
+        result.setData(formId);
+        return result;
     }
 
     @PostMapping(value = "/rearchFormId")
-    public List<Integer> findFormIdWithPersonId(Integer personId){
+    public Result findFormIdWithPersonId(Integer personId){
         List<RepairForm> personList = repairFormRepository.findRepairFormByPersonId(personId);
         List<Integer> formIdList = new ArrayList();
         int index;
@@ -107,8 +130,20 @@ public class RepairFormController {
             int temp= personList.get(index).getFormId();
             formIdList.add(temp);
         }
-        System.out.println(formIdList);
-        return formIdList;
+//        System.out.println(formIdList);
+        Result result = new Result();
+        if(formIdList.isEmpty())
+        {
+            result.setCode(-1);
+            result.setMsg("未找到该用户提交的formId");
+        }
+        else {
+            result.setCode(1);
+            result.setMsg("以下为所有该用户提交的formId");
+        }
+
+        result.setData(formIdList );
+        return result;
     }
     public int findUserType(Integer personId){
         Person user = (personRepository.findPersonByPersonId(personId)).get(0);
