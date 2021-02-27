@@ -30,17 +30,6 @@ public class LoginController {
     StringRedisTemplate redisTemplate;
     @GetMapping("login")
     public ResponseEntity<Boolean> login(@RequestParam(name = "id")Integer id, @RequestParam(name = "password")String password) throws JsonProcessingException {
-        HashMap<String,String> map = new HashMap<>();
-        map.put("dasfa","dsafadfafdas");
-        LogType type = new LogType("saf",map);
-        LogInfo info = new LogInfo("002", "info", type);
-        ListOperations<String, String> ops = redisTemplate.opsForList();
-        ops.leftPush("test",MAPPER.writeValueAsString(info));
-        List<String> test = ops.range("test", 0, -1);
-        LogInfo logInfo = MAPPER.readValue(test.get(0), LogInfo.class);
-        LogType data = logInfo.getData();
-        System.out.println(data.getMap().get("dasfa"));
-        return null;
     }
 
     @GetMapping("logout")
