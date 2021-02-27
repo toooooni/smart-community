@@ -15,6 +15,7 @@ public class RegisterController {
 
     @PostMapping
     public ResponseEntity<String> register(){
+        return null;
 
     }
 }
